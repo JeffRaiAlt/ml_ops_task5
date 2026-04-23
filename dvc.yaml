@@ -28,5 +28,5 @@ stages:
       - data/processed/test.csv
     params:
       - train.target
-    outs:
+    metrics:
       - report/metrics.json
