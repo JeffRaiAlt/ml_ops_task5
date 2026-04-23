@@ -1,0 +1,6 @@
+run_dvc.bat
+.venv
+.git
+data/
+model/
+.dvc/cache/

@@ -1,0 +1,21 @@
+prepare:
+  input_path: data/raw/bank_clients.csv
+  output_dir: data/processed
+  target: Exited
+  test_size: 0.2
+  random_state: 42
+
+train:
+  model_type: random_forest
+  target: Exited
+  model_path: model/model.pkl
+  random_state: 42
+
+  logistic_regression:
+    C: 1.0
+    max_iter: 1000
+
+  random_forest:
+    n_estimators: 200
+    max_depth: 10
+    min_samples_split: 2

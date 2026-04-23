@@ -1,0 +1,32 @@
+stages:
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+      - src/prepare.py
+      - data/raw/bank_clients.csv
+    params:
+      - prepare
+    outs:
+      - data/processed
+
+  train:
+    cmd: python src/train.py
+    deps:
+      - src/train.py
+      - data/processed/train.csv
+    params:
+      - train
+      - prepare.output_dir
+    outs:
+      - model/model.pkl
+
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+      - src/evaluate.py
+      - model/model.pkl
+      - data/processed/test.csv
+    params:
+      - train.target
+    outs:
+      - report/metrics.json
