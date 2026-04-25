@@ -1,0 +1,41 @@
+project: my_feature_store_prg
+project_description:
+  Некоторое описание проекта
+#registry: data/registry.db
+#provider: local
+# РЕЕСТР В POSTGRES
+registry:
+    registry_type: sql
+    path: postgresql+psycopg://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=disable
+    cache_ttl_seconds: 60
+    sqlalchemy_config_kwargs:
+        echo: false
+        pool_pre_ping: true
+
+# 1. Онлайн-хранилище (для быстрой выдачи моделью)
+online_store:
+    type: postgres
+    host: ${DB_HOST}
+    port: ${DB_PORT}
+    database: ${DB_NAME}
+    user: ${DB_USER}
+    password: ${DB_PASSWORD}
+    sslmode: disable
+    # Опционально: схема, по умолчанию public
+    # db_schema: public
+
+# 2. Оффлайн-хранилище (источник исторических данных)
+offline_store:
+    type: postgres
+    host: ${DB_HOST}
+    port: ${DB_PORT}
+    database: ${DB_NAME}
+    user: ${DB_USER}
+    password: ${DB_PASSWORD}
+    sslmode: disable
+auth:
+    type: no_auth
+
+
+
+
