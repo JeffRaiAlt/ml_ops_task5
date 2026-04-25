@@ -1,1 +1,10 @@
-todo
+dvc==3.67.1
+mlflow==3.11.1
+pandas==2.3.3
+numpy==2.4.3
+scikit-learn==1.8.0
+joblib==1.5.3
+PyYAML==6.0.3
+psycopg[binary]==3.3.3
+SQLAlchemy==2.0.49
+python-dotenv==1.2.2

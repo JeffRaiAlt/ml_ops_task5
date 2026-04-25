@@ -81,7 +81,7 @@ dvc exp branch + git checkout
 путей → использованы полные пути параметров 
 (train.random_forest.n_estimators) и params: - train
 
-
+Задание 3. Создать хранилище признаков (Feature Store)
 Driver Stats Feature Store 🚀
 Этот проект реализует Feature Store для управления признаками статистики водителей с использованием Feast и PostgreSQL. Проект переведен с файлового хранилища (Parquet) на полноценную БД.
 🏗 Структура проекта

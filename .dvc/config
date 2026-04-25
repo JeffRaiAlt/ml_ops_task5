@@ -1,0 +1,4 @@
+[core]
+    remote = storage
+['remote "storage"']
+    url = C:\MIPT\Projects\ML_devops\src\Task_5
