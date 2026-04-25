@@ -16,6 +16,6 @@ train:
     max_iter: 1000
 
   random_forest:
-    n_estimators: 100
+    n_estimators: 300
     max_depth: 10
     min_samples_split: 2
