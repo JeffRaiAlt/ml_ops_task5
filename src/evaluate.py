@@ -96,7 +96,7 @@ def main() -> None:
         metrics = predict(model, X_test, y_test)
 
         save_metrics(metrics, metrics_path)
-
+        print(metrics)
         mlflow.log_metrics(metrics)
         mlflow.log_artifact(str(metrics_path))
 

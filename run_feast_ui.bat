@@ -1,0 +1,1 @@
+..\..\..\.venv\Scripts\dotenv.exe ..\..\..\.venv\Scripts\feast.exe -c local_repo/feature_repo ui

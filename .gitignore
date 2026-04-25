@@ -1,6 +1,8 @@
-run_dvc.bat
 .venv
 .git
-data/
+data/raw/*
+!data/raw/*.dvc
 model/
 .dvc/cache/
+.dvc/tmp/
+__marimo__

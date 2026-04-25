@@ -1,0 +1,81 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+    - path: data/raw/bank_clients.csv
+      hash: md5
+      md5: 521154ad40ed08ee1b2a1f706aa49f39
+      size: 179193
+    - path: src/prepare.py
+      hash: md5
+      md5: 449899e63b24db5c84920b5bf7431866
+      size: 1472
+    params:
+      params.yaml:
+        prepare:
+          input_path: data/raw/bank_clients.csv
+          output_dir: data/processed
+          target: Exited
+          test_size: 0.2
+          random_state: 42
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: 6aeef451fd8ee1af1c70d716e11ef8b4.dir
+      size: 181843
+      nfiles: 2
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/processed/train.csv
+      hash: md5
+      md5: fc56ff6e8aad157b72e9f27f4cf4c6df
+      size: 145355
+    - path: src/train.py
+      hash: md5
+      md5: 8603b70b05951a1427797af0a048a124
+      size: 4172
+    params:
+      params.yaml:
+        prepare.output_dir: data/processed
+        train:
+          model_type: random_forest
+          target: Exited
+          model_path: model/model.pkl
+          random_state: 42
+          logistic_regression:
+            C: 1.0
+            max_iter: 1000
+          random_forest:
+            n_estimators: 100
+            max_depth: 10
+            min_samples_split: 2
+    outs:
+    - path: model/model.pkl
+      hash: md5
+      md5: 42c5761567bc7cf06f3711296eca9129
+      size: 527115
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: 9c0c84c9427c9f22711b443c8783bd44
+      size: 36488
+    - path: model/model.pkl
+      hash: md5
+      md5: 42c5761567bc7cf06f3711296eca9129
+      size: 527115
+    - path: src/evaluate.py
+      hash: md5
+      md5: bc13ccf434b9cbf65f834a19caef3c10
+      size: 3121
+    params:
+      params.yaml:
+        train.target: Exited
+    outs:
+    - path: report/metrics.json
+      hash: md5
+      md5: c9dc96a0773a26653f0c6f2a31a4168a
+      size: 157
