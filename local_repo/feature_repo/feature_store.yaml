@@ -1,6 +1,6 @@
 project: my_feature_store_prg
 project_description:
-  Некоторое описание проекта
+  Учебный проект для работы с Feature Store
 #registry: data/registry.db
 #provider: local
 # РЕЕСТР В POSTGRES

@@ -14,16 +14,16 @@ from feast.infra.offline_stores.contrib.postgres_offline_store.postgres_source i
 from feast.on_demand_feature_view import on_demand_feature_view
 from feast.types import Float32, Float64, Int64, Json, Map, String, Struct
 
-# 1. Проект (должен совпадать с feature_store.yaml)
-project = Project(name="my_feature_store_prg", description="Проект на PostgreSQL")
+# 1. Проект
+project = Project(name="my_feature_store_prg", description="Учебный проект для работы с Feature Store")
 
 # 2. Сущность
 driver = Entity(name="driver", join_keys=["driver_id"], value_type=ValueType.INT64)
 
-# 3. НОВЫЙ ИСТОЧНИК (PostgreSQL вместо FileSource)
+# 3. PostgreSQL
 driver_stats_source = PostgreSQLSource(
     name="driver_hourly_stats_source",
-    table="feast_driver_hourly_stats", # Имя таблицы из вашего seed_postgres.py
+    table="feast_driver_hourly_stats",
     timestamp_field="event_timestamp",
     created_timestamp_column="created",
 )

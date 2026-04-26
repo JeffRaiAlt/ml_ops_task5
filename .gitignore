@@ -6,3 +6,4 @@ model/
 .dvc/cache/
 .dvc/tmp/
 __marimo__
+.env
